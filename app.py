@@ -35,5 +35,8 @@ def normalize_merchant_heuristic(tx: Transaction) -> Merchant:
 
 @app.post("/normalize_merchant")
 async def normalize_merchant(tx: Transaction):
-    merchant = normalize_merchant_heuristic(tx)
+    loop = asyncio.get_running_loop()
+
+    with concurrent.futures.ProcessPoolExecutor() as pool:
+        merchant = await loop.run_in_executor(pool, normalize_merchant_heuristic, tx)
     return merchant
