@@ -51,5 +51,7 @@ async def normalize_merchant(tx: Transaction, background_tasks: BackgroundTasks)
 
 @app.post("/normalize_merchant_response")
 def normalize_merchant_response(merchant: Merchant) -> Merchant:
+    # In real world, this would trigger a notification on the user's end
+    # to let him/her know that the results are ready
     print(merchant)
     return merchant
