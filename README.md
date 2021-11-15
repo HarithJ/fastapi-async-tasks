@@ -71,14 +71,6 @@ docker run --rm -p 9898:9898 pave-api
 
 ### Step 3: test
 
-**This did not work for me**
-```bash
-curl localhost:9898/normalize_merchant \
-  --request POST \
-  --data-raw '{"date": "2021-04-01", "description": "Payment Netflix APRIL***", "amount": 12.99}'
-```
-
-**This is working**
 ```
 curl -X 'POST' \
   'http://127.0.0.1:9898/normalize_merchant' \
